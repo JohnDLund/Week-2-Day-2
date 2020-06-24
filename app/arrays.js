@@ -4,6 +4,9 @@
 // output: ['is', 'a', 'split', 'sentence.', 'This']
 
 function rearranger(arr) {
+    arr.push(arr[0])
+    arr.shift()
+    return arr
 }
 
 
@@ -16,6 +19,8 @@ function rearranger(arr) {
 // output: 42
 
 function largestNum(arr) {
+    largestNumber = Math.max(...arr)
+    return largestNumber
 }
 
 
@@ -28,6 +33,11 @@ function largestNum(arr) {
 // output: [16, 8, 4, 28]
 
 function elemsTimesLength(arr) {
+    newArr = []
+    for (let i = 0; i < arr.length; i++) {
+        newArr.push(arr[i] * arr.length)
+    }
+    return newArr
 }
 
 
@@ -41,7 +51,15 @@ function elemsTimesLength(arr) {
 // Primitive data types - https://developer.mozilla.org/en-US/docs/Glossary/Primitive
 
 function arrayFlattener(arr) {
-
+    myArray = []
+    let newArr = arr.flat(Infinity)
+    for (let i = 0; i < newArr.length; i++) {
+        if (typeof newArr[i] != "object") {
+            myArray.push(newArr[i])
+        }
+    }
+    console.log(myArray)
+    return myArray
 }
 
 
@@ -76,7 +94,16 @@ let flights = [{
 
 function flightCost(destination, firstClass) {
     //***hint: use the find method***
-
+    let match = flights.find(function (i) {
+        return i.to == destination
+    })
+    if (match !== undefined) {
+        if (firstClass == true) {
+            return match.prices.firstClass
+        } else {
+            return match.prices.standard
+        }
+    }
 }
 
 
